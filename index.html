@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zephyr</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime; /* Changed color to lime for better visibility */
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+      white-space: pre-wrap;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-size: 24px;
+    }
+
+    .typing-bar {
+      display: inline-block;
+      animation: blink 0.7s infinite;
+    }
+
+    button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px;
+      background-color: lime;
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Function to simulate typing
+    function simulateTyping() {
+      const codeElement = document.body;
+      const codeText = ` Hello, I am Zephyr Dev.\nI am a Discord Bot, Telegram Bot and web developer.\nDiscord Server: In progress\nGithub: In progress\nPersonal Website: zephyr.is-a.dev`;
+
+      let index = 0;
+
+      function appendChar() {
+        codeElement.innerHTML += codeText[index];
+
+        if (index < codeText.length - 1) {
+          codeElement.scrollTop = codeElement.scrollHeight;
+          setTimeout(() => {
+            index++;
+            appendChar();
+          }, 50); // Typing speed: 50 milliseconds
+        }
+      }
+
+      appendChar();
+    }
+
+    // Start typing simulation on page load
+    simulateTyping();
+
+    // Function to replay typing animation
+    function replayAnimation() {
+      location.reload();
+    }
+  </script>
+
+  <!-- Replay button -->
+  <button onclick="replayAnimation()">Replay</button>
+</body>
+</html>
